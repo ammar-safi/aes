@@ -18,7 +18,7 @@ class AesController extends Controller
         $this->initializeParams();
         $this->keyExpansion();
     }
-    
+
     private function initializeParams()
     {
         $this->key = $this->config['APP-KEY'];
@@ -30,6 +30,16 @@ class AesController extends Controller
 
     public function encrypt($plaintext)
     {
+        if (!$this->validateString($plaintext)) {
+            $message["message"] = "The input must containing only numbers or English letter";
+            echo $this->ValidationError($message);
+            exit;
+        }
+        if (!$this->validateLength($plaintext)) {
+            $message["message"] = "The length must be 16 byte or less'16 letter'";
+            echo $this->ValidationError($message);
+            exit;
+        }
 
         try {
             $plaintext = $this->padding($plaintext);
@@ -58,7 +68,11 @@ class AesController extends Controller
 
     public function decrypt($cipherText)
     {
-        
+        if (!$this->validateCipherText($cipherText)) {
+            $message["message"] = "The input must be hexa string and 32 byte '32 letter'";
+            echo $this->ValidationError($message);
+            exit;
+        }
         try {
             $cipherText = hex2bin($cipherText);
             $state = $this->textToMatrix($cipherText);

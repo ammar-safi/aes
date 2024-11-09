@@ -44,9 +44,9 @@ trait   GeneralTrait
     {
         return $this->apiResponse(null, false, $error, 400);
     }
-    public function ValidationError($validator, $data = null)
+    public function ValidationError($message)
     {
-        return $this->apiResponse($data, false, $validator, 400);
+        return $this->apiResponse(null, false, $message, 400);
     }
     public function Unauthorized()
     {
@@ -64,7 +64,7 @@ trait   GeneralTrait
     /**
      * Server Errors Response
      * @param $error
-     * @return \Illuminate\Http\JsonResponse
+     * @return json_encode
      */
     public function ServerError($error)
     {

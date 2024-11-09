@@ -47,15 +47,23 @@ class Controller
 
     protected function padding($text, $blockSize = 16)
     {
-        $pad = $blockSize - strlen($text);
-        return $text . str_repeat($pad, $pad);
+        $pad = $blockSize - (strlen($text) % $blockSize);
+        return $text . str_repeat(chr($pad), $pad);
     }
 
     protected function removePadding($text)
     {
-        $last = $text[strlen($text) - 1];
-        return substr($text, 0, -$last);
+        $pad = ord($text[strlen($text) - 1]); 
+        if ($pad <= 0 || $pad > strlen($text)) { 
+            return $text; 
+        }
+       
+        if (substr($text, -$pad) === str_repeat(chr($pad), $pad)) {
+            return substr($text, 0, -$pad); 
+        }
+        return $text; 
     }
+    
     protected function addRoundKey(&$state, $roundKey)
     {
         for ($i = 0; $i < 4; $i++) {
