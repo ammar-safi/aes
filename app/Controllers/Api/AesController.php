@@ -62,7 +62,10 @@ class AesController extends Controller
             $data["cipherText"] = bin2hex($cipherText);
 
             echo $this->SuccessResponse($data);
+            exit;
         } catch (Exception $error) {
+            echo $this->ServerError($error);
+            exit;
         }
     }
 
@@ -94,7 +97,10 @@ class AesController extends Controller
             $plaintext = $this->removePadding($plaintext);
             $data['plaintext'] = $plaintext;
             echo $this->SuccessResponse($data);
+            exit;
         } catch (Exception $error) {
+            echo $this->ServerError($error);
+            exit;
         }
     }
 }
