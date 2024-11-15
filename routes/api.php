@@ -2,12 +2,11 @@
 
 use app\Controllers\Api\AesController;
 
-define('PATH', "/");
+define('PATH', "/index.php/");
 
 
 $AesController = new AesController;
 $request = $_SERVER["REQUEST_URI"];
-
 switch ($request) {
     case PATH .  "api/encrypt?planeText=" . @$_GET["planeText"]:
         $AesController->encrypt($_GET["planeText"]);
