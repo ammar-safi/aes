@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers\api;
+namespace App\Controllers\Api;
 
-use app\controllers\Controller;
-use app\Traits\GeneralTrait;
-use app\Traits\Validation;
+use App\Controllers\Controller;
+use App\Traits\GeneralTrait;
+use App\Traits\Validation;
 use Exception;
 
 class AesController extends Controller

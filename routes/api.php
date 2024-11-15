@@ -1,6 +1,6 @@
 <?php
 
-use app\Controllers\Api\AesController;
+use App\Controllers\Api\AesController;
 
 define('PATH', "/");
 
