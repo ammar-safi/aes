@@ -1,9 +1,22 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # تعيين قاعدة لإعادة كتابة عنوان URL
     RewriteBase /
-    
+
+    # إعادة توجيه كافة الطلبات إلى ملف index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    
-    RewriteRule ^(.*)$ index.php [QSA,L]
+    RewriteRule ^ index.php [L]
 </IfModule>
+
+# إعدادات إضافية (اختياري)
+# تحديد نوع الملفات التي يمكن معالجتها
+AddType application/json .json
+AddType application/xml .xml
+
+# منع الوصول إلى ملفات معينة
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|sh|git)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
