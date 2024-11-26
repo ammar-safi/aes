@@ -28,8 +28,9 @@ class AesController extends Controller
     }
 
 
-    public function encrypt($plaintext)
+    public function encrypt()
     {
+        $plaintext = $_GET["planeText"];
         if (!$this->validateString($plaintext)) {
             $message["message"] = "The input must containing only numbers or English letter";
             echo $this->ValidationError($message);
@@ -69,8 +70,10 @@ class AesController extends Controller
         }
     }
 
-    public function decrypt($cipherText)
+    public function decrypt()
     {
+        $cipherText = $_GET["cipherText"];
+        
         if (!$this->validateCipherText($cipherText)) {
             $message["message"] = "The input must be hexa string and 32 byte '32 letter'";
             echo $this->ValidationError($message);

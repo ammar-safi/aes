@@ -4,7 +4,7 @@ namespace app\Traits;
 
 
 
-trait   GeneralTrait
+trait GeneralTrait
 {
 
     public function apiResponse($data = null, bool $status = true, $error = null, $statusCode = 200)

@@ -1,37 +1,35 @@
 <?php
 
 use app\Controllers\Api\AesController;
+use app\Controllers\Api\ResponseController;
+use function app\Helpers\checkIfSet;
+
 
 define('PATH', "/index.php/");
 
 
 $AesController = new AesController;
+$ResponseController = new ResponseController;
 $request = $_SERVER["REQUEST_URI"];
 switch ($request) {
-    case PATH .  "api/encrypt?planeText=" . @$_GET["planeText"]:
-        $AesController->encrypt($_GET["planeText"]);
+    case PATH .  "api/encrypt?planeText=" . checkIfSet('planeText'):
+        $AesController->encrypt();
         break;
-    case PATH .  "api/decrypt?cipherText=" . @$_GET['cipherText']:
-        $AesController->decrypt($_GET["cipherText"]);
+
+    case PATH .  "api/decrypt?cipherText=" . checkIfSet('cipherText'):
+        $AesController->decrypt();
         break;
-    case PATH : 
-    case PATH ."api":
-    case PATH ."api/":
-        echo json_encode([
-            "data" => [
-                "message" => "This_application_was_made_by_Eng_AmmarSafi_😇"
-            ],
-            'status' => true,
-            "error" => null,
-            "statusCode" => 200
-        ]);
+
+    case '/':
+    case PATH:
+    case PATH . "api":
+    case PATH . "api/":
+        $ResponseController->helloMessage();
         break;
+
     default:
-        echo json_encode([
-            "data" => null,
-            'status' => false,
-            "error" => "This URL not found",
-            "statusCode" => 404
-        ]);
+        $ResponseController->notFoundUrl();
         break;
 }
+
+
