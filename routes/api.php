@@ -2,8 +2,6 @@
 
 use app\Controllers\Api\AesController;
 use app\Controllers\Api\ResponseController;
-use function app\Helpers\checkIfSet;
-
 
 define('PATH', "/index.php/");
 
@@ -33,3 +31,6 @@ switch ($request) {
 }
 
 
+function checkIfSet($queryPar) {
+    return (isset($_GET[$queryPar]) ? $_GET[$queryPar] : '') ;
+}

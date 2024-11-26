@@ -15,6 +15,7 @@ trait GeneralTrait
             'error' => $error, // user not found 
             'statusCode' => $statusCode // 404 500 403 200 303 (headers code)
         ];
+        http_response_code($statusCode);
         return json_encode($response);
     }
 
@@ -29,7 +30,6 @@ trait GeneralTrait
      */
     public function SuccessResponse($data = null, $statusCode = 200)
     {
-
         return $this->apiResponse($data, true, null, $statusCode);
     }
     public function PartialContent($data, $error)
