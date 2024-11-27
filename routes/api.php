@@ -54,7 +54,7 @@ switch ($request) {
  * anyway .. 
  */
 
- 
+
 /**
  * This function check if the query params is set in the URL or not 
  * 
