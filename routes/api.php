@@ -46,22 +46,3 @@ switch ($request) {
         $ResponseController->notFoundUrl();
         break;
 }
-
-
-/**
- * Here I write any functions i need  
- * I should write functions in app/Helpers/Helpers.php 
- * anyway .. 
- */
-
-
-/**
- * This function check if the query params is set in the URL or not 
- * 
- * @param queryPar : the name of the query params 
- * @return $_GET[$queryPar] if its exist or an empty string 
- */
-function checkIfSet($queryPar)
-{
-    return (isset($_GET[$queryPar]) ? $_GET[$queryPar] : '');
-}
