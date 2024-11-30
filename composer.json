@@ -3,6 +3,6 @@
         "psr-4": {
             "app\\": "app/"
         },
-        "files": ["app/helpers/functions.php"]
+        "files": ["app/Helpers/Functions.php"]
     }
 }

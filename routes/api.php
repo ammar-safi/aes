@@ -26,7 +26,7 @@ $ResponseController = new ResponseController;
 
 
 $request = $_SERVER["REQUEST_URI"];
-switch ($request) {
+switch ($request) {     
     case PATH .  "api/encrypt?planeText=" . checkIfSet('planeText'):
         $AesController->encrypt();
         break;
