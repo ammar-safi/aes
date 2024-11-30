@@ -16,7 +16,7 @@ trait GeneralTrait
             'statusCode' => $statusCode // 404 500 403 200 303 (headers code)
         ];
         http_response_code($statusCode);
-        return json_encode($response);
+        return json_encode([$response]);
     }
 
     public function Error($error, $statusCode)
