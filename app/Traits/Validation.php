@@ -6,7 +6,7 @@ trait Validation
 {
     function validateString($text): bool
     {
-        $pattern = "/^[a-zA-Z0-9 ]+$/";
+        $pattern = "/^[a-zA-Z0-9-_ ]+$/";
         $result = preg_match($pattern, trim($text));
         return  $result === 1 ; 
     }
@@ -23,3 +23,5 @@ trait Validation
         return $result === 1 ;
     }
 }
+
+
